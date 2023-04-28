@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  flashcardDB:
+    image: postgres
+    restart: always
+    ports:
+      - '5433:5433'
+    environment:
+      POSTGRES_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
