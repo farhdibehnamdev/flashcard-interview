@@ -1,16 +1,28 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { ReviewModule } from './modules/review/review.module';
 import { FlashcardModule } from './modules/flashcard/flashcard.module';
-import { CollectionModule } from './modules/collection/collection.module';
+import { DeckModule } from './modules/collection/deck.module';
 import { ProgressModule } from './modules/progress/progress.module';
 import { UsersModule } from './modules/users/users.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { databaseConfig } from 'db/data-source';
 
 @Module({
-  imports: [AuthModule, ReviewModule, FlashcardModule, CollectionModule, ProgressModule, UsersModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+
+    TypeOrmModule.forRoot(databaseConfig),
+
+    AuthModule,
+    ReviewModule,
+    FlashcardModule,
+    DeckModule,
+    ProgressModule,
+    UsersModule,
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
