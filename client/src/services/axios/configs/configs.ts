@@ -4,7 +4,7 @@ const axiosParams = {
   baseURL: "http://localhost:3001/v1/",
 };
 
-const axiosInstance = axios.create(axiosParams);
+export const axiosInstance = axios.create(axiosParams);
 
 const api = (axios: AxiosInstance) => {
   return {
